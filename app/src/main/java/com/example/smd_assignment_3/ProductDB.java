@@ -10,8 +10,6 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-
-
 public class ProductDB {
     public final String DATABASE_NAME = "products_db";
     public final String DATABASE_TABLE_NAME = "products";

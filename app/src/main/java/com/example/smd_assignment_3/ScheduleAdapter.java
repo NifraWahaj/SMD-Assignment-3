@@ -17,7 +17,7 @@ public class ScheduleAdapter extends ArrayAdapter<Product> {
     private final ProductDB productDB;
 
     public ScheduleAdapter(Context context, List<Product> products) {
-        super(context, R.layout.list_item_product_sch, products);
+        super(context, R.layout.scheduled_product_view, products);
         this.context = context;
         this.products = products;
         this.productDB = new ProductDB(context);
@@ -28,7 +28,7 @@ public class ScheduleAdapter extends ArrayAdapter<Product> {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_item_product_sch, parent, false);
+            convertView = inflater.inflate(R.layout.scheduled_product_view, parent, false);
         }
 
         Product product = products.get(position);
