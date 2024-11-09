@@ -7,19 +7,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class DeliveredFragment extends Fragment {
 
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private String mParam1;
     private String mParam2;
 
     public DeliveredFragment() {
-        // Required empty public constructor
     }
 
     public static DeliveredFragment newInstance(String param1, String param2) {
@@ -43,7 +43,17 @@ public class DeliveredFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delivered, container, false);
+        View view = inflater.inflate(R.layout.fragment_delivered, container, false);
+
+        ListView listView = view.findViewById(R.id.productListView);
+        ProductDB productDB = new ProductDB(getContext());
+        productDB.open();
+
+        ArrayList<Product> scheduledProducts = productDB.fetchProductsWithStatus("delivered");
+        productDB.close();
+        ScheduleAdapter adapter = new ScheduleAdapter(getContext(), scheduledProducts);
+        listView.setAdapter(adapter);
+
+        return view;
     }
 }

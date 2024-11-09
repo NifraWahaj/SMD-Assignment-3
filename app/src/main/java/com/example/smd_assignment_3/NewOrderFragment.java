@@ -15,12 +15,15 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+
 public class NewOrderFragment extends Fragment {
 
     Context context;
+    private ProductAdapter adapter;
+    private ArrayList<Product> products;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private String mParam1;
     private String mParam2;
 
@@ -32,6 +35,7 @@ public class NewOrderFragment extends Fragment {
         super.onAttach(context);
         this.context = context;
     }
+
     public static NewOrderFragment newInstance(String param1, String param2) {
         NewOrderFragment fragment = new NewOrderFragment();
         Bundle args = new Bundle();
@@ -62,13 +66,13 @@ public class NewOrderFragment extends Fragment {
         ListView lvNewOrderList = view.findViewById(R.id.lvNewOrdersList);
         ProductDB productDB = new ProductDB(context);
         productDB.open();
-        ArrayList<Product> products = productDB.fetchProducts();
+        products = productDB.fetchProducts();
         productDB.close();
 
         ProductAdapter adapter = new ProductAdapter(context, R.layout.product_item_design, products);
         lvNewOrderList.setAdapter(adapter);
-    }
 
+    }
 
     public void refreshProductList() {
         ProductDB productDB = new ProductDB(context);
@@ -80,5 +84,4 @@ public class NewOrderFragment extends Fragment {
         ListView lvNewOrderList = getView().findViewById(R.id.lvNewOrdersList);
         lvNewOrderList.setAdapter(adapter);
     }
-
 }

@@ -37,11 +37,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         adapter = new ViewPagerAdapter(this);
         vp2 = findViewById(R.id.viewpager2);
         vp2.setAdapter(adapter);
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //setting custom view for dialog.
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setTitle("Product");
                 View v = LayoutInflater.from(MainActivity.this)
@@ -71,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
                         productDB.open();
                         productDB.insert(title, date, Integer.parseInt(price));
                         productDB.close();
-
-                        // Notify user
                         Toast.makeText(MainActivity.this, "Product Added", Toast.LENGTH_SHORT).show();
 
                         // Refresh the fragment
@@ -83,15 +84,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
                 dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
                 });
-                dialog.show();
 
+                dialog.show();
             }
         });
 
@@ -127,22 +127,15 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 TabLayout.Tab selectedTab = tabLayout.getTabAt(position);
-         //       count++;
                 BadgeDrawable badgeDrawable = selectedTab.getBadge();
-                if(badgeDrawable != null)
-                {
-                    count=0;
+                if(badgeDrawable != null) {
+                    count = 0;
                     badgeDrawable.setNumber(count);
-                    if(!flag)
-                        flag=true;
+                    if (!flag)
+                        flag = true;
                     else
                         badgeDrawable.setVisible(false);
                 }
-
-
-            //       badgeDrawable.setNumber(count);
-
-
             }
         });
 

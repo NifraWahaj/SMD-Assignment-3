@@ -5,13 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".NewOrderFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ListView
+    <!-- Header Tex -->
+    <TextView
+        android:id="@+id/tvHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="20sp"
+        android:text="New Orders"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="16dp"/>
+
+
+
+    <ListView
         android:id="@+id/lvNewOrdersList"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"/>
 
 </FrameLayout>

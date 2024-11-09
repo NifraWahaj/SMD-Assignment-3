@@ -2,7 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primaryColor">#0F2E6B</color> <!-- Pink for Edit -->
-    <color name="secondaryColor">#FF3D00</color> <!-- Red for Delete -->
+    <color name="primaryColor">#0F2E6B</color>
+    <color name="secondaryColor">#FF3D00</color>
+
+    <color name="colorPrimary">#D96C29</color>
+    <color name="colorAccent">#F2A900</color> <!-- Warm Yellow -->
+    <color name="tabTextColor">#BDBDBD</color>
+    <color name="tabSelectedTextColor">#D96C29</color>
+    <color name="tabIndicatorColor">#F2A900</color>
+    <color name="backgroundColor">#F9F7F2</color>
+
+
 
 </resources>

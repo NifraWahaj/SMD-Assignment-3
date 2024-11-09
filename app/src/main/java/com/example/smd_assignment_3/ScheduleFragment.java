@@ -1,5 +1,6 @@
 package com.example.smd_assignment_3;
 
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
 
 public class ScheduleFragment extends Fragment {
 
@@ -40,6 +45,19 @@ public class ScheduleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_schedule, container, false);
+        View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+
+        ListView listView = view.findViewById(R.id.productListView);
+        ProductDB productDB = new ProductDB(getContext());
+        productDB.open();
+
+        ArrayList<Product> scheduledProducts = productDB.fetchProductsWithStatus("new");
+        productDB.close();
+        ScheduleAdapter adapter = new ScheduleAdapter(getContext(), scheduledProducts);
+        listView.setAdapter(adapter);
+
+        return view;
     }
+
+
 }

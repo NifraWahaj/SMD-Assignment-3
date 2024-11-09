@@ -1,69 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="@color/primaryColor"
-        app:cardElevation="8dp"
-        android:layout_marginBottom="12dp">
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/white"
 
+        android:layout_marginBottom="16dp">
+
+        <!-- Inner LinearLayout to structure the content inside the CardView -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="12dp">
 
+            <!-- Product Title -->
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="7"
                 android:id="@+id/tvProductTitle"
-                android:textColor="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
                 android:text="Product Name"
+                android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold|italic"
+                android:gravity="start|center_vertical"
                 android:maxLines="1"
-                android:ellipsize="end"
-                />
+                android:ellipsize="end" />
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp">
+                android:paddingStart="12dp">
 
+                <!-- Edit Icon -->
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/edit_icon"
-                    android:contentDescription="Edit"
-                    android:padding="8dp"
                     android:id="@+id/ivEdit"
-                    app:tint="@color/white"
-                    android:layout_marginRight="15dp"
-                    android:layout_gravity="center"/>
+                    android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/edit_icon"
+                android:padding="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                app:tint="@color/black" />
 
+                <!-- Delete Icon -->
                 <ImageView
                     android:id="@+id/ivDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="Delete"
-                    android:padding="8dp"
-                    android:src="@drawable/delete_icon"
-                    app:tint="@color/white" />
+                    android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/delete_icon"
+                android:padding="8dp"
 
+                android:background="?android:attr/selectableItemBackground"
+                app:tint="@color/black" />
             </LinearLayout>
 
         </LinearLayout>
